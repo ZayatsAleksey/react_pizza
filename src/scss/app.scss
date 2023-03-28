@@ -364,3 +364,196 @@ body {
     display: block;
   }
 }
+
+//////////////////////////////////////////////////////////////////////////////
+
+.single_pizza_image {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+
+  img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.single_pizza_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  h2 {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .Search_input__klILD {
+    width: 200px !important;
+  }
+
+  .Search_root__eiX89 {
+    left: 0 !important;
+  }
+
+  .button {
+    min-width: 170px;
+  }
+
+  .header__logo {
+    p {
+      max-width: 125px;
+    }
+  }
+
+  .cart__item-img {
+    width: 15%;
+  }
+
+  .cart__item-info {
+    width: 30%;
+  }
+
+  .cart__item-price {
+    width: 20%;
+  }
+
+  .cart__item-count {
+    width: 22%;
+  }
+
+  .cart__item-remove {
+    width: 10%;
+  }
+
+  .cart__item-count,
+  .cart__item-remove {
+
+    .button {
+      min-width: auto;
+    }
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+
+  .wrapper {
+    width: calc(100vw - 20px);
+  }
+
+  .content {
+    padding-top: 0;
+  }
+
+  .Search_root__eiX89 {
+    margin-top: 15px;
+    width: 100%;
+    left: 0 !important;
+  }
+
+  .Search_input__klILD {
+    width: 100% !important;
+  }
+
+  .pizza-block {
+    width: 100%;
+  }
+
+  .categories {
+
+    ul {
+      display: block;
+
+      li {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .sort__label {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pizza-block__image {
+    width: 100%;
+  }
+
+  .Pagination_root__3MiIM {
+    li {
+      margin: 0 3px !important;
+    }
+  }
+
+  .cart--empty {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .container--cart {
+    margin-top: 20px;
+  }
+
+  .cart {
+    .content__title {
+      font-size: 24px;
+    }
+  }
+
+  .cart__clear {
+    span {
+      font-size: 16px;
+    }
+  }
+
+  .cart__item {
+    display: block;
+
+    >div {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .cart__item-count {
+
+    b {
+      margin: 0 10px;
+    }
+  }
+
+  .cart__item-count {
+    margin: 15px 0;
+  }
+
+  .cart__item-remove {
+    margin-top: 15px;
+  }
+
+  .cart__bottom {
+    margin-top: 20px;
+  }
+
+  .cart__bottom-details {
+    display: block;
+
+    >span {
+      display: block;
+    }
+  }
+
+  .cart__bottom-buttons {
+    display: block;
+    margin-top: 0;
+
+    .button {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+}
