@@ -1,20 +1,21 @@
 import React from 'react';
-// import qs from "qs";
-import { useSelector, useDispatch } from "react-redux";
-// import { useNavigate } from "react-router-dom";
+import qs from "qs";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from '../redux/store';
+import { useNavigate } from "react-router-dom";
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Pagination from '../Pagination';
 import { setFilters, selectFilter } from '../redux/slices/filterSlice';
-// import { sortList } from "../components/Sort";
-import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzasSlice';
+import { sortList } from "../components/Sort";
+import { fetchPizzas, SearchPizzaParams, selectPizzaData } from '../redux/slices/pizzasSlice';
 
 const Home: React.FC = () => {
 
-  const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const {categoryId, sort, searchValue ,currentPage} = useSelector(selectFilter);
 
@@ -38,13 +39,14 @@ const Home: React.FC = () => {
     const sortBy = sort.sortProperty.replace("-", "");
     const order = sort.sortProperty.includes("-") ? "asc" : "desc";
 
-    // @ts-ignore
-    dispatch(fetchPizzas({
-      category,
-      sortBy,
-      order,
-      currentPage
-    }))
+    dispatch(
+      fetchPizzas({
+        category,
+        sortBy,
+        order,
+        currentPage: String(currentPage),
+      })
+    )
 
   }
 
@@ -53,8 +55,8 @@ const Home: React.FC = () => {
     window.scrollTo(0, 0);
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
-  // const isSearch = React.useRef(false);
-  // const isMounted = React.useRef(false);
+  const isSearch = React.useRef(false);
+  const isMounted = React.useRef(false);
 
   // React.useEffect(() => {
   //   window.scrollTo(0, 0);
@@ -75,6 +77,10 @@ const Home: React.FC = () => {
 
   //     navigate(`?${queryString}`);
 
+  //     if (!window.location.search) {  // TODO Зачем? В предыдущих уроках не было!!! Перенести на gitHub если что!
+  //       dispatch(fetchPizzas({} as SearchPizzaParams));
+  //     }
+
   //   }
 
   //   isMounted.current = true;
@@ -85,17 +91,30 @@ const Home: React.FC = () => {
 
   //   if (window.location.search) {
 
-  //     const params = qs.parse(window.location.search.substring(1));
-  //     const sort = sortList.find(obj => obj.sortProperty === params.sortProperty);
+  //     const params = qs.parse(window.location.search.substring(1)) as unknown as SearchPizzaParams;
+  //     const sort = sortList.find(obj => obj.sortProperty === params.sortBy);
 
-  //     dispatch(
-  //       setFilters({
-  //         ...params,
-  //         sort,
-  //       })
-  //     );
+  //     if (sort) {                    // TODO New version???
+  //       params.sort = sort;          //
+  //     }                              //
+  //                                    //
+  //     dispatch(setFilters({
+  //       categoryId: number;
+  //       sort: Sort;
+  //       searchValue: string;
+  //       currentPage: number;
+  //     }));  //
+  //                                    //
+  //     isMounted.current = true;      //
 
-  //     isSearch.current = true;
+  //     // dispatch(                   // TODO Old variant???
+  //     //   setFilters({
+  //     //     ...params,
+  //     //     sort,
+  //     //   })
+  //     // );
+
+  //     // isSearch.current = true;
 
   //   }
   // }, []);
