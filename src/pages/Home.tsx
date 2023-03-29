@@ -1,5 +1,5 @@
 import React from 'react';
-import qs from "qs";
+// import qs from "qs";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Categories from "../components/Categories";
@@ -8,13 +8,13 @@ import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Pagination from '../Pagination';
 import { setFilters, selectFilter } from '../redux/slices/filterSlice';
-import { sortList } from "../components/Sort";
+// import { sortList } from "../components/Sort";
 import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzasSlice';
 
 const Home: React.FC = () => {
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const {categoryId, sort, searchValue ,currentPage} = useSelector(selectFilter);
 
@@ -49,51 +49,56 @@ const Home: React.FC = () => {
   }
 
   React.useEffect(() => {
+    getPizzas();
     window.scrollTo(0, 0);
-    if (!isSearch.current) {
-      getPizzas();
-    }
-    isSearch.current = false;
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
 
-  React.useEffect(() => {
+  // React.useEffect(() => {
+  //   window.scrollTo(0, 0);
+  //   if (!isSearch.current) {
+  //     getPizzas();
+  //   }
+  //   isSearch.current = false;
+  // }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
-    if (isMounted.current) {
-      const queryString = qs.stringify({
-        sortProperty: sort.sortProperty,
-        categoryId,
-        currentPage,
-      });
+  // React.useEffect(() => {
 
-      navigate(`?${queryString}`);
+  //   if (isMounted.current) {
+  //     const queryString = qs.stringify({
+  //       sortProperty: sort.sortProperty,
+  //       categoryId,
+  //       currentPage,
+  //     });
 
-    }
+  //     navigate(`?${queryString}`);
 
-    isMounted.current = true;
+  //   }
 
-  }, [categoryId, sort.sortProperty, currentPage]);
+  //   isMounted.current = true;
 
-  React.useEffect(() => {
+  // }, [categoryId, sort.sortProperty, currentPage]);
 
-    if (window.location.search) {
+  // React.useEffect(() => {
 
-      const params = qs.parse(window.location.search.substring(1));
-      const sort = sortList.find(obj => obj.sortProperty === params.sortProperty);
+  //   if (window.location.search) {
 
-      dispatch(
-        setFilters({
-          ...params,
-          sort,
-        })
-      );
+  //     const params = qs.parse(window.location.search.substring(1));
+  //     const sort = sortList.find(obj => obj.sortProperty === params.sortProperty);
 
-      isSearch.current = true;
+  //     dispatch(
+  //       setFilters({
+  //         ...params,
+  //         sort,
+  //       })
+  //     );
 
-    }
-  }, []);
+  //     isSearch.current = true;
+
+  //   }
+  // }, []);
 
   return (
     <div className='container'>
@@ -101,7 +106,7 @@ const Home: React.FC = () => {
         <Categories/>
         <Sort/>
       </div>
-      <h2 className="content__title">Все пиццы</h2>
+      <h2 className="content__title">Пиццы:</h2>
       {
         status === "error"
         ? <div className='content__error-info'>
