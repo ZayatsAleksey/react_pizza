@@ -9,7 +9,6 @@ const Categories: React.FC = () => {
 
   const categoryId = useSelector(selectCategory)
 
-
   const onChangeCategory = (index: number) => {
     dispatch(setCategoryId(index));
   };

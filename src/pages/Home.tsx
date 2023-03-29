@@ -1,7 +1,7 @@
 import React from 'react';
 // import qs from "qs";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
@@ -53,8 +53,8 @@ const Home: React.FC = () => {
     window.scrollTo(0, 0);
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
-  const isSearch = React.useRef(false);
-  const isMounted = React.useRef(false);
+  // const isSearch = React.useRef(false);
+  // const isMounted = React.useRef(false);
 
   // React.useEffect(() => {
   //   window.scrollTo(0, 0);
