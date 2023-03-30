@@ -1,6 +1,7 @@
 import ReactPaginate from 'react-paginate';
 import { useSelector, useDispatch } from "react-redux";
-import { setCurrentPage, selectCurrentPage } from '../redux/slices/filterSlice';
+import { selectCurrentPage } from '../redux/filter/selectors';
+import { setCurrentPage } from '../redux/filter/slice';
 import styles from "./Pagination.module.scss"
 
 const Pagination: React.FC = () => {
