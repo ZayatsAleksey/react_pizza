@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Pizza, PizzaSliceState, Status } from "./types";
 import { fetchPizzas } from "./asyncActions";
