@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const FullPizza: React.FC = () => {
-
   const navigate = useNavigate();
 
   const [pizza, setPizza] = React.useState<{
@@ -13,7 +13,6 @@ const FullPizza: React.FC = () => {
   }>();
 
   const {id} = useParams();
-
 
   React.useEffect(() => {
 
@@ -37,9 +36,19 @@ const FullPizza: React.FC = () => {
 
   return (
     <div className='container'>
-      <img src={pizza.imageUrl}/>
-      <h2>{pizza.title}</h2>
-      <h4>{pizza.price}</h4>
+      <div className='single_pizza'>
+        <div className='single_pizza_image'>
+          <img src={pizza.imageUrl}/>
+        </div>
+        <div className='single_pizza_info'>
+          <h2>{pizza.title} {pizza.price} ₽</h2>
+        </div>
+        <Link to="/">
+          <button className='button button--outline button--add'>
+            Назад
+          </button>
+        </Link>
+      </div>
     </div>
   )
 

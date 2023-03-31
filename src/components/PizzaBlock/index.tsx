@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import CartItem from "../CartItem";
 import { addItem } from "../../redux/cart/slice";
 import { selectCartItemById } from "../../redux/cart/selectors";
+import { CartItemType } from "../../redux/cart/types";
 
 type PizzaBlockProps = {
   id: string;
@@ -14,8 +14,7 @@ type PizzaBlockProps = {
   types: string[];
 };
 
-const PizzaBlock: React.FC<PizzaBlockProps> = ({id, title, price, imageUrl, sizes, types}) => {
-
+export const PizzaBlock: React.FC<PizzaBlockProps> = ({id, title, price, imageUrl, sizes, types}) => {
   const dispatch = useDispatch();
 
   const [activeType, setActiveType] = React.useState(0);
@@ -23,7 +22,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({id, title, price, imageUrl, size
 
   const onClickAdd = () => {
 
-    const item: CartItem = {
+    const item: CartItemType = {
       id,
       title,
       price,
@@ -100,5 +99,3 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({id, title, price, imageUrl, size
   )
 
 }
-
-export default PizzaBlock;

@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectCategory } from "../redux/filter/selectors";
 import { setCategoryId } from '../redux/filter/slice';
 
-const Categories: React.FC = React.memo(
-  () => {
-
+export const Categories: React.FC = React.memo(() => {
   const dispatch = useDispatch();
 
   const categories = ["Все", "Мясные", "Вегитарианские", "Гриль", "Острые", "Закрытые"];
@@ -32,6 +30,3 @@ const Categories: React.FC = React.memo(
     </div>
   )}
 )
-
-export default Categories;
-

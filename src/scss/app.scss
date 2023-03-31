@@ -409,6 +409,10 @@ body {
   h2 {
     margin-right: 20px;
   }
+
+  + button {
+    margin: 20px auto 0;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
